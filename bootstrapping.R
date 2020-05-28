@@ -16,7 +16,6 @@ test_sleep <- function(df) {
 }
 theta_hat <- test_sleep(sleep)
 
-
 # First sample under the null.
 boot_null_factory <- function(df) {
   df <- as_tibble(df)
@@ -29,7 +28,6 @@ boot_null_factory <- function(df) {
 }
 
 boot_null <- boot_null_factory(sleep)
-
 
 # Create a tibble `boot_null_results` with values of the regression coefficients 
 # averaged over an increasing number of bootstrap replicates.
@@ -49,7 +47,6 @@ boot_null_results <- tibble(
   dplyr::select(-df_b) %>%
   mutate(theta_b = map_dbl(theta_b, "statistic"))
 
-
 # Q-Q plot of `theta_b`
 library(ggplot2)
 
@@ -63,7 +60,6 @@ ggplot(boot_null_results,
                as_labeller(function(x) paste(x, "replicates"))) +
   labs(x = "Theoretical quantiles",
        y = "Sample quantiles")
-
 
 # Extract the p values
 boot_null_pval <- boot_null_results %>%
