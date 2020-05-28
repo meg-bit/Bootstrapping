@@ -1,6 +1,5 @@
 ---
 title: "Bootstrapping"
-output: html_notebook
 ---
 
 ```{r}
